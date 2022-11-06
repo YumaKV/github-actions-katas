@@ -34,9 +34,12 @@ jobs:
         run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh  
       - name: Upload Repo
         uses: actions/upload-artifact@v2
-        with: 
-          name: build_app
-          path: app/build/libs/app-0.1-all.jar        
+        with:
+          name: code
+          path: .
+        #with: 
+         # name: build_app
+          #path: app/build/libs/app-0.1-all.jar        
   Docker-image:
     name: Docker-image
     runs-on: ubuntu-latest
