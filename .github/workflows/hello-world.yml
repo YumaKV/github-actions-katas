@@ -45,8 +45,8 @@ jobs:
       - name: Download code
         uses: actions/download-artifact@v1
         with:
-            name: code
-            path: .
+          name: code
+          path: .
       - name: build_image 
         run: chmod +x ci/build-docker.sh && ci/build-docker.sh
       - name: push_image
