@@ -6,7 +6,7 @@ env:
   GIT_COMMIT: ${{ github.sha }}
 jobs:
   Clone-down:
-    name: Clone down
+    name: Clone-down
     runs-on: self-hosted
     container: gradle:6-jdk11
     steps:
