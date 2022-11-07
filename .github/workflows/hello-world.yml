@@ -7,7 +7,7 @@ env:
 jobs:
   Clone-down:
     name: Clone down
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     container: gradle:6-jdk11
     steps:
       - name: Clone-down
@@ -19,7 +19,7 @@ jobs:
           path: .
   Build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     container: gradle:6-jdk11
     needs: Clone-down   
     steps:
@@ -42,7 +42,7 @@ jobs:
           #path: app/build/libs/app-0.1-all.jar        
   Docker-image:
     name: Docker-image
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [Build]
     steps:
       - name: Download code
@@ -56,7 +56,7 @@ jobs:
         run: chmod +x ci/push-docker.sh && ci/push-docker.sh
   Component-test:
     name: Component-test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: Docker-image
     steps:
       - name: Download code
@@ -68,7 +68,7 @@ jobs:
         run: chmod +x ci/component-test.sh && GIT_COMMIT="GA-$GITHUB_SHA" && ci/component-test.sh
   Performance-test:
     name: Performance-test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: Docker-image
     steps:
       - name: Download code
